@@ -113,7 +113,6 @@
 </template>
 
 <script>
-import config from "../../config";
 import Snackbar from "./helpers/Snackbar";
 
 export default {
@@ -149,47 +148,57 @@ export default {
         this.showSnackbar = true;
         this.snackbarMessage = "Please fill all the fields";
         this.snackbarColor = "rgb(212, 149, 97)";
-      } else {
-        const payload = {
-          embeds: [
-            {
-              title: "📬 New Contact Message",
-              color: 0x0099ff,
-              fields: [
-                { name: "Name", value: this.name, inline: false },
-                { name: "Email", value: this.email, inline: false },
-                { name: "Message", value: this.text, inline: false },
-              ],
-              timestamp: new Date(),
-            },
-          ],
-        };
+        return;
+      }
 
-        try {
-          const res = await fetch(config.discord.webhookURL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-          });
+      const webhookURL = process.env.VUE_APP_DISCORD_WEBHOOK_URL;
 
-          if (res.ok) {
-            this.showSnackbar = true;
-            this.snackbarMessage = "Thanks! Message sent via Discord.";
-            this.snackbarColor = "#1aa260";
+      if (!webhookURL) {
+        console.error("🚨 Missing webhook URL from env vars");
+        this.showSnackbar = true;
+        this.snackbarMessage = "Server misconfiguration.";
+        this.snackbarColor = "red";
+        return;
+      }
 
-            this.email = "";
-            this.text = "";
-            this.name = "";
-          } else {
-            throw new Error("Discord webhook failed.");
-          }
-        } catch (err) {
+      const payload = {
+        embeds: [
+          {
+            title: "📬 New Contact Message",
+            color: 0x0099ff,
+            fields: [
+              { name: "Name", value: this.name, inline: false },
+              { name: "Email", value: this.email, inline: false },
+              { name: "Message", value: this.text, inline: false },
+            ],
+            timestamp: new Date(),
+          },
+        ],
+      };
+
+      try {
+        const res = await fetch(webhookURL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
           this.showSnackbar = true;
-          this.snackbarMessage = "Oops! Something went wrong.";
-          this.snackbarColor = "rgb(212, 149, 97)";
+          this.snackbarMessage = "Thanks! Message sent via Discord.";
+          this.snackbarColor = "#1aa260";
+          this.email = "";
+          this.name = "";
+          this.text = "";
+        } else {
+          throw new Error("Discord webhook failed.");
         }
+      } catch (err) {
+        this.showSnackbar = true;
+        this.snackbarMessage = "Oops! Something went wrong.";
+        this.snackbarColor = "rgb(212, 149, 97)";
       }
     },
   },
