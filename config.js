@@ -1,6 +1,6 @@
 let config = {
   discord: {
-    webhookURL: import.meta.env.VITE_DISCORD_WEBHOOK_URL,
+    webhookURL: process.env.VUE_APP_DISCORD_WEBHOOK_URL,
   },
 };
 
