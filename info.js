@@ -1,6 +1,7 @@
+import resumePDF from "./assets/pdfs/Resume.pdf";
 let info = {
   name: "Anshul Choudhary",
-  logo_name: "radiant",
+  logo_name: "Anshul",
   flat_picture: require("./src/assets/pp.png"),
   config: {
     use_cookies: true,
@@ -14,8 +15,7 @@ let info = {
     linkedin: "https://www.linkedin.com/in/0xrad1ant/",
     twitter: "https://twitter.com/0xrad1ant",
     github: "https://github.com/0xrad1ant",
-    resume:
-      "https://github.com/0xrad1ant",
+    resume: resumePDF,
   },
   education: [
     {
@@ -74,7 +74,7 @@ let info = {
       skills: ["Burp Suite", "API Security", "Responsible Disclosure", "OWASP Top 10"]
     },
   ],
-  
+
 
   skills: [
     {
@@ -190,7 +190,7 @@ let info = {
       icon: "fas fa-search"
     }
   ],
-  
+
 
   portfolio: [
     {
