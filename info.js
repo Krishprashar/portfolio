@@ -1,7 +1,6 @@
-import resumePDF from "./assets/pdfs/Resume.pdf";
 let info = {
-  name: "Anshul Choudhary",
-  logo_name: "Anshul",
+  name: "Krish Parashar",
+  logo_name: "Krish",
   flat_picture: require("./src/assets/pp.png"),
   config: {
     use_cookies: true,
@@ -10,13 +9,14 @@ let info = {
     }
   },
   description:
-    "Cybersecurity enthusiast and CSE undergrad at Lovely Professional University, with a focus on malware analysis, OSINT, and security research. I enjoy solving complex problems and building hands-on CTF challenges that test real-world skills. I’m passionate about offensive security and constantly exploring ways to break, analyze, and secure systems. I’m also a tech enthusiast and love to learn about new technologies and their applications in the cybersecurity domain.",
+    "I am a passionate cybersecurity learner and CSE undergrad at Lovely Professional University, I focus on hands-on projects in areas like malware analysis, honeypot deployment, and OSINT challenges. I am also dedicated to building secure web applications using Cloudflare Workers and creating real-world cybersecurity solutions. My goal is to continually learn and grow in the field while contributing to innovative security practices.",
   links: {
     linkedin: "https://www.linkedin.com/in/0xrad1ant/",
-    twitter: "https://twitter.com/0xrad1ant",
+    email: "mailto:0xrad1ant@itsradiant.me",
     github: "https://github.com/0xrad1ant",
-    resume: resumePDF,
+    resume: "https://raw.githubusercontent.com/0xRad1ant/portfolio/main/src/assets/pdfs/Resume.pdf",
   },
+
   education: [
     {
       name: "Lovely Professional University",
@@ -166,18 +166,6 @@ let info = {
       icon: "fas fa-code-branch"
     },
     {
-      title: "authentication & security protocols",
-      info: [
-        "OAuth2",
-        "JWT",
-        "TOTP",
-        "HTTPS",
-        "SSH",
-        "TLS/SSL"
-      ],
-      icon: "fas fa-lock"
-    },
-    {
       title: "ctf & forensics tools",
       info: [
         "CyberChef",
@@ -188,7 +176,18 @@ let info = {
         "hashcat"
       ],
       icon: "fas fa-search"
+    },
+    {
+      title: "soft skills",
+      info: [
+        "Problem Solving",
+        "Adaptability",
+        "Team Collaboration",
+        "Critical Thinking"
+      ],
+      icon: "fas fa-user-check"
     }
+
   ],
 
 
